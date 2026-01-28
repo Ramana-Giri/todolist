@@ -13,18 +13,13 @@ public class TaskService {
     TaskRepository taskRepository;
 
     // Create task
-    public void addTask(int id,String task) {
-        Task taskObj = new Task();
-        taskObj.setId(id);
-        taskObj.setTask(task);
-        taskRepository.save(taskObj);
+    public Task addTask(Task task) {
+        return taskRepository.save(task);
     }
 
     // Update task
-    public void updateTask(int id, String task) {
-        Task taskObj = taskRepository.findById(id).orElseThrow();
-        taskObj.setTask(task);
-        taskRepository.save(taskObj);
+    public Task updateTask(Task task) {
+        return taskRepository.save(task);
     }
 
     // Read All Tasks
@@ -40,6 +35,5 @@ public class TaskService {
     // Delete Task
     public void deleteTask(int id) {
         taskRepository.deleteById(id);
-        System.out.println("Task Deleted Successfully");
     }
 }
